@@ -1,4 +1,6 @@
-Atividade Fase 4 - containerization strategy.
+## Atividade Fase 4
+
+__*Containerization Strategy*__
 
 ## Customização de ContainerFile
 Arquivo na raiz do projeto com o nome `ContainerFile`
