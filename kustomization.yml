@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: fiap
 resources:
   - pvc/pvc-database.yml
-  - secret/database-secret
+  - secret/database-secret.yml
   - database/deployment-database.yml
   - blog/deployment-blog.yml
   - service/blog-service.yml
