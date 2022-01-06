@@ -32,7 +32,7 @@ oc apply -k kustomization.yml
 
 `hpa/hpa-blog.yml` - Criação de regra para escalar a blog caso necessário.
 
-`hpa/hpa-database.yml` Criação de regra para escalar o banco de dados caso necessário.
+`hpa/hpa-database.yml` - Criação de regra para escalar o banco de dados caso necessário.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
