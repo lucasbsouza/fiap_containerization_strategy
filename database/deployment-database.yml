@@ -1,0 +1,76 @@
+﻿kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: database-blog
+  namespace: fiap
+  labels:
+    app: database-blog
+    app.kubernetes.io/component: database-blog
+    app.kubernetes.io/instance: database-blog
+    RM: 'RM340709-DATABASE'
+spec:
+  strategy:
+    type: Recreate
+    recreateParams:
+      timeoutSeconds: 600
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - postgresql
+        from:
+          kind: ImageStreamTag
+          namespace: openshift
+          name: 'postgresql:10'
+        lastTriggeredImage: postgres:10.19-alpine
+    - type: ConfigChange
+  replicas: 1
+  test: false
+  selector:
+    name: database-blog
+  template:
+    metadata:
+      labels:
+        name: database-blog
+    spec:
+      volumes:
+        - name: database-blog-volume
+          persistentVolumeClaim:
+            claimName: pvc-database-blog-rm340709
+      containers:
+        - resources:
+            limits:
+              memory: 512Mi
+          name: postgresql
+          env:
+            - name: POSTGRESQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret
+                  key: database-user
+            - name: POSTGRESQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret
+                  key: database-password
+            - name: POSTGRESQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret
+                  key: database-name
+          ports:
+            - containerPort: 5432
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: database-blog-volume
+              mountPath: /var/lib/pgsql/data
+          terminationMessagePolicy: File
+          image: postgres:10.19-alpine
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler

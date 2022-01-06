@@ -1,0 +1,19 @@
+﻿kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  annotations:
+    volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/cinder
+    volume.kubernetes.io/selected-node: node-pvc-database-blog
+  name: pvc-database-blog-rm340709
+  namespace: fiap
+  labels:
+    app: pvc-database-blog-rm340709
+    RM: 'RM340709-PVC'
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard
+  volumeName: pvc-database-blog-rm340709

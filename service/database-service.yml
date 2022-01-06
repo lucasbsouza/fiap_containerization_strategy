@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: database-service
+  namespace: fiap
+  labels:
+    app: database-service
+    RM: 'RM340709-SERVICE'
+spec:
+  ports:
+    - protocol: TCP
+      port: 5432
+  selector:
+    name: database-blog
+  type: LoadBalancer
