@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/part-of: blog-django-py-git-app
     app.openshift.io/runtime: python
     app.openshift.io/runtime-version: 3.8-ubi7
-    RM: 'RM340709-SERVICE-BLOG'
+    RM: 'RM340709_SERVICE_BLOG'
 spec:
   ports:
     - protocol: TCP

@@ -4,11 +4,11 @@ metadata:
   annotations:
     volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/cinder
     volume.kubernetes.io/selected-node: node-pvc-database-blog
-  name: pvc-database-blog-rm340709
+  name: pvc-database-blog
   namespace: fiap
   labels:
     app: pvc-database-blog-rm340709
-    RM: 'RM340709-PVC'
+    RM: 'RM340709_PVC'
 spec:
   accessModes:
     - ReadWriteOnce
@@ -16,4 +16,4 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: standard
-  volumeName: pvc-database-blog-rm340709
+  volumeName: pvc-database-blog

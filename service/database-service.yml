@@ -5,7 +5,7 @@ metadata:
   namespace: fiap
   labels:
     app: database-service
-    RM: 'RM340709-SERVICE'
+    RM: 'RM340709_SERVICE'
 spec:
   ports:
     - protocol: TCP

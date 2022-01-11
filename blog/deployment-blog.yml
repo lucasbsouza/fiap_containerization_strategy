@@ -5,19 +5,17 @@ metadata:
     app.openshift.io/vcs-uri: 'https://github.com/openshift-katacoda/blog-django-py.git'
     deployment.kubernetes.io/revision: '2'
     image.openshift.io/triggers: openshiftkatacoda/blog-django-py
+    description: "Blog python"
+    iconClass: "icon-python"
+    tags: "python,blog"
   name: blog-django-py-git
   generation: 2
-  name: blog-django-py-git
   namespace: fiap
   labels:
     app: blog-django-py-git
     runtime: python
-    RM: '340709 BLOG APP'
+    RM: 'RM340709_BLOG_APP'
     app.openshift.io/runtime-version: 3.8-ubi7
-  annotations:
-    description: "Blog python"
-    iconClass: "icon-python"
-    tags: "python,blog"
 spec:
   replicas: 1
   selector:
